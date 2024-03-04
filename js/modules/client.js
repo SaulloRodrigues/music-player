@@ -8,7 +8,7 @@ let statePlay = {
         'cache': {
             size: null,
         }
-    }
+    },
 }
 
 class SoundProperties {

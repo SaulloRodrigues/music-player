@@ -1,34 +1,68 @@
-const audioTrack = new Audio('luxuria.mp3');
-const playButton = document.querySelector('#play');
+const playButton = document.getElementById('play');
+const searchInput = document.getElementById('search-send');
 import { SoundProperties, statePlay } from './modules/client.js';
 const sound = new SoundProperties();
-//document.querySelector('.reproduction').setAttribute('title', 'offline');
 
-audioTrack.addEventListener('canplay', function () {
-    sound.setEvent("ready")
-})
+let audioTrack = new Audio();
+let currentTrack = {
+    "url": null,
+    "title": null,
+    "artist": null,
+    "duration": null,
+};
 
-audioTrack.addEventListener('play', async function () {
-    const playIcon = document.querySelector('.bi-play');
-    playIcon.classList.remove('bi-play');
-    playIcon.classList.add('bi-pause');
-})
 
-audioTrack.addEventListener('pause', async function () {
-    const pauseIcon = document.querySelector('.bi-pause');
-    pauseIcon.classList.remove('bi-pause');
-    pauseIcon.classList.add('bi-play');
+const playTrack = () => {
+    searchInput.addEventListener('keypress', async (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            var value = searchInput.value;
+            var isNewUrl = `../assets/music/${value}.mp3`;
+            if (currentTrack.url !== isNewUrl) {
+                currentTrack.url = isNewUrl;
+                console.log(currentTrack.url)
+                if (audioTrack) {
+                    audioTrack.src = currentTrack.url;
+                    eAudioListerners();
+                };
+            };
+        };
+    });
 
-})
+    playButton.addEventListener('click', () => {
 
-playButton.addEventListener('click', async function () {
-    if (statePlay.connection.cache.nowevent === "ready") {
-        audioTrack.play();
-        sound.setEvent("play"); 
-    } else
-        if (statePlay.connection.cache.nowevent === "play") {
+        if (playButton.classList.contains('bi-play')) {
+            playButton.classList.remove('bi-play');
+            playButton.classList.add('bi-pause');
+        }
+        else {
+            playButton.classList.remove('bi-pause');
+            playButton.classList.add('bi-play');
+        }
+        if (audioTrack && statePlay.connection.cache.nowevent === "ready") {
+            audioTrack.play();
+            sound.setEvent("play");
+        }
+        else if (audioTrack && statePlay.connection.cache.nowevent === "play") {
             audioTrack.pause();
             sound.setEvent("ready");
-        };
-    console.log(statePlay.connection.cache.nowevent)
-})
+        }
+        console.log(statePlay.connection.cache.nowevent);
+    });
+}
+
+const eAudioListerners = () => {
+    audioTrack.addEventListener('canplay', () => {
+        sound.setEvent("ready");
+    });
+
+
+    audioTrack.addEventListener('abort', () => {
+        if (playButton.classList.contains('bi-pause') || currentTrack.url) {
+            playButton.classList.remove('bi-pause')
+            playButton.classList.add('bi-play');
+        }
+    })
+}
+
+playTrack();
