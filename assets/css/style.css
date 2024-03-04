@@ -19,7 +19,7 @@ p {
 
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  background-color: #000;
+  background-color: #121212;
 }
 
 .container-initial {
@@ -48,13 +48,14 @@ body {
 .music-plataform {
   padding: 10px;
   border-radius: 5px;
+  border: #ffffff22 2px solid;
   width: 30vw;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   gap: 2vh;
   align-items: center;
-  background-color: white;
+  background-color: #2a2828;
 }
 
 .skletonimg {
@@ -86,4 +87,9 @@ body {
 .bi-play,
 .bi-pause {
   font-size: 38px;
+}
+
+#imagem-da-musica {
+  transition-duration: 500ms;
+  transition-property: opacity;
 }
