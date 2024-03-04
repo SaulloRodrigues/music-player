@@ -11,9 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
-
 <body>
-
   <div class="container-initial">
     <div class="container-initial-cardmusic">
       <form id="myForm" class="max-w-md mx-auto search_music">
@@ -38,29 +36,28 @@
         <div id="status-container" role="status"
           class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
           <div
-            class="skletonimg flex items-center justify-center h-48 bg-gray-300 rounded-full overflow-hidden sm:w-96 dark:bg-gray-700">
+            class="skletonimg flex items-center justify-center bg-gray-300 overflow-hidden dark:bg-gray-700">
             <img id="imagem-da-musica" class="w-full h-full opacity-0 object-cover" alt="Imagem da Música">
           </div>
         </div>
       </div>
       <div class="music-plataform-textfield">
-        <p id="title-track"></p>
-        <p id="artits-track"></p>
+        <p id="title-track">Carregando...</p>
+        <p id="artits-track">Carregando...</p>
         <p></p>
       </div>
       <div class="music-plataform-progressbar">
       </div>
       <div class="music-plataform-controls">
-        <i data-toogle="Voltar" id="back" class="bi bi-skip-backward"></i>
-        <i data-toogle="Reproduzir" id="play" class="bi bi-play"></i>
-        <i data-toogle="Próximo" id="next" class="bi bi-skip-forward"></i>
+        <i id="back-track" class="fi fi-sr-angle-double-small-left track-icons"></i>
+        <i id="play-track" class="fi fi-br-play track-icons"></i>
+        <i id="next-track" class=" fi-sr-angle-double-small-right track-icons"></i>
       </div>
     </div>
   </div>
   </div>
   </div>
-  <script type="module" src="js/app.js"></script>
-
+  <script type="module" src="src/app.js"></script>
 </body>
 
 </html>

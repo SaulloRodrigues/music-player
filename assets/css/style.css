@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
 
 * {
   box-sizing: border-box !important;
-  -moz-box-sizing: border-box;
+  -moz-box-sizing: border-box !important;
   margin: 0;
   padding: 0;
 }
@@ -18,7 +20,7 @@ p {
 }
 
 body {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   background-color: #121212;
 }
 
@@ -58,38 +60,77 @@ body {
   background-color: #2a2828;
 }
 
+.music-plataform-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
 .skletonimg {
   display: flex;
-  width: 16vw !important;
-  height: 32vh !important;
-  border-radius: 50% !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px !important;
+  width: 18vw !important;
+  height: 35vh !important;
 }
 
 .music-plataform-controls {
   display: flex;
   align-items: center;
-  gap: 5rem;
-  position: relative;
+  gap: 5vw;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: max-content;
 }
 
-.bi {
+.track-icons {
+  display: flex;
+  align-items: center;
   cursor: pointer;
   color: #afacac;
-  font-size: 26px;
+  width: auto;
+  font-size: 2.5vh;
   transition-property: color;
   transition-duration: 500ms;
 }
 
-.bi:hover {
-  color: #1d1c1c;
+.track-icons:hover {
+  color: white;
 }
 
-.bi-play,
-.bi-pause {
-  font-size: 38px;
+
+.fi-br-play,
+.fi-br-pause {
+  color: rgb(192, 189, 189);
+  background-color: rgb(82, 80, 80);
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 3vh;
 }
+
 
 #imagem-da-musica {
   transition-duration: 500ms;
   transition-property: opacity;
+}
+
+.music-plataform-textfield {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#title-track {
+  font-weight: 800;
+  color: white;
+  font-size: 1.5rem;
+}
+
+#artits-track {
+  color: #8b8b8b;
+  font-size: 1rem;
+  font-weight: 500;
 }

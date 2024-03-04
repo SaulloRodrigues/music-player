@@ -1,4 +1,4 @@
-const playButton = document.getElementById('play');
+const playButton = document.getElementById('play-track');
 const searchInput = document.getElementById('search-send');
 import { SoundProperties, statePlay } from './modules/client.js';
 import { dataTracks } from './modules/availableTracks.js';
@@ -80,9 +80,11 @@ const playTrack = () => {
                     }, 100);
                     const statusContainer = document.getElementById('status-container');
                     statusContainer.classList.remove('animate-pulse');
+                    document.getElementById('title-track').innerHTML = bestMatchData.title;
+                    document.getElementById('artits-track').innerHTML = bestMatchData.artist;
                 }
             } else {
-                throw new Error('A música desejada não foi encontrada.');
+                throw alert('A música desejada não foi encontrada.');
             }
         }
     });
@@ -94,22 +96,22 @@ const playTrack = () => {
         });
 
         audioTrack.addEventListener('abort', () => {
-            if (playButton.classList.contains('bi-pause') || currentTrack.url) {
-                playButton.classList.remove('bi-pause');
-                playButton.classList.add('bi-play');
+            if (playButton.classList.contains('fi-br-pause') || currentTrack.url) {
+                playButton.classList.remove('fi-br-pause');
+                playButton.classList.add('fi-br-play');
             }
         })
     }
 
     playButton.addEventListener('click', () => {
 
-        if (playButton.classList.contains('bi-play')) {
-            playButton.classList.remove('bi-play');
-            playButton.classList.add('bi-pause');
+        if (playButton.classList.contains('fi-br-play')) {
+            playButton.classList.remove('fi-br-play');
+            playButton.classList.add('fi-br-pause');
         }
         else {
-            playButton.classList.remove('bi-pause');
-            playButton.classList.add('bi-play');
+            playButton.classList.remove('fi-br-pause');
+            playButton.classList.add('fi-br-play');
         }
         if (audioTrack && statePlay.connection.cache.nowevent === "ready") {
             audioTrack.play();
